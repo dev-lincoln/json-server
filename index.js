@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const { uuid } = require("uuidv4");
-app.use(express.json());
+
 const fs = require("fs");
 
 const readFile = () => {
@@ -22,8 +22,8 @@ app.get("/alunos", (req, res) => {
 app.get("/alunos/:id", (req, res) => {
   const { id } = req.params;
   const content = readFile();
-  const usuario = content.find((usuario) => usuario.id == id);
-  res.json(usuario);
+  const user = content.find((user) => user.id == id);
+  res.json(user);
 });
 
 app.post("/alunos", (req, res) => {
@@ -46,7 +46,7 @@ app.put("/alunos/:id", (req, res) => {
   const { id } = req.params;
   const { nome, idade } = req.body;
   const currentContent = readFile();
-  const userIndex = currentContent.findIndex((usuario) => usuario.id == id);
+  const userIndex = currentContent.findIndex((user) => user.id == id);
   currentContent[userIndex].nome = nome;
   currentContent[userIndex].idade = idade;
   writeFile(currentContent);
@@ -56,8 +56,10 @@ app.put("/alunos/:id", (req, res) => {
 
 app.delete("/alunos/:id", (req, res) => {
   const { id } = req.params;
-  const userIndex = usuarios.findIndex((usuario) => usuario.id == Number(id));
-  usuarios.splice(index, 1);
+  const currentContent = readFile();
+  const userIndex = currentContent.findIndex((user) => user.id == id);
+  currentContent.splice(userIndex, 1);
+  writeFile(currentContent);
   res.status(204).send();
 });
 
