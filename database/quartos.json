@@ -1,0 +1,30 @@
+[
+  {
+    "numeroQuarto": 401,
+    "tipo": "master",
+    "cama": "queen size",
+    "ocupado": true,
+    "preco": 400.0
+  },
+  {
+    "numeroQuarto": 101,
+    "tipo": "standard",
+    "cama": "solteiro",
+    "ocupado": true,
+    "preco": 150.00
+  },
+  {
+    "numeroQuarto": 201,
+    "tipo": "duplo",
+    "cama": "solteiro",
+    "ocupado": true,
+    "preco": 200.00
+  },
+  {
+    "numeroQuarto": 301,
+    "tipo": "deluxe",
+    "cama": "casal",
+    "ocupado": false,
+    "preco": 300.00
+  }
+]
