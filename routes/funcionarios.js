@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { uuid } = require("uuidv4");
+const { v4 } = require("uuid");
 const fs = require("fs");
 
 const readFile = () => {
@@ -26,34 +26,41 @@ router.get("/funcionarios/:id", (req, res) => {
 
 router.post("/funcionarios/add", (req, res) => {
   const { nome, sobrenome, cargo, telefone } = req.body;
-  const id = uuid();
-
-  const newFunc = {
-    nome,
-    sobrenome,
-    cargo,
-    telefone,
-    id,
-  };
+  const id = v4();
 
   currentContent = readFile();
-  currentContent.push(newFunc);
+  currentContent.push({ nome, sobrenome, cargo, telefone, id });
   writeFile(currentContent);
-  res.status(201).json(newFunc);
+  res.status(201).json({ nome, sobrenome, cargo, telefone, id });
 });
 
 router.put("/funcionarios/att/:id", (req, res) => {
   const { id } = req.params;
+
   const { nome, sobrenome, cargo, telefone } = req.body;
+
   const currentContent = readFile();
   const funcIndex = currentContent.findIndex((func) => func.id == id);
-  currentContent[funcIndex].nome = nome;
-  currentContent[funcIndex].sobrenome = sobrenome;
-  currentContent[funcIndex].cargo = cargo;
-  currentContent[funcIndex].telefone = telefone;
+
+  const {
+    nome: cNome,
+    sobrenome: cSobrenome,
+    cargo: cCargo,
+    telefone: cTelefone,
+    id: cId,
+  } = currentContent[funcIndex];
+
+  const updateFunc = {
+    nome: nome ? nome : cNome,
+    sobrenome: sobrenome ? sobrenome : cSobrenome,
+    cargo: cargo ? cargo : cCargo,
+    telefone: telefone ? telefone : cTelefone,
+    id: cId,
+  };
+  currentContent[funcIndex] = updateFunc;
   writeFile(currentContent);
 
-  res.json(currentContent[funcIndex]);
+  res.json(updateFunc);
 });
 
 router.delete("/funcionarios/del/:id", (req, res) => {
