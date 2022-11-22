@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/dev-lincoln/json-server.git"
   },
-  "author": "",
+  "author": "dev-lincoln",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dev-lincoln/json-server/issues"
