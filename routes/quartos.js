@@ -25,17 +25,17 @@ router.get("/quartos/:id", (req, res) => {
 });
 
 router.post("/quartos/add", (req, res) => {
-  const { id, tipo, cama, ocupado, preco } = req.body;
+  const { id, tipo, cama, ocupado, preco, foto } = req.body;
   currentContent = readFile();
-  currentContent.push({ id, tipo, cama, ocupado, preco  });
+  currentContent.push({ id, tipo, cama, ocupado, preco, foto  });
   writeFile(currentContent);
-  res.status(201).json({ id, tipo, cama, ocupado, preco  });
+  res.status(201).json({ id, tipo, cama, ocupado, preco, foto });
 });
 
 router.put("/quartos/att/:id", (req, res) => {
   const { id: pId } = req.params;
 
-  const { id, tipo, cama, ocupado, preco } = req.body;
+  const { id, tipo, cama, ocupado, preco, foto } = req.body;
 
   const currentContent = readFile();
   const quartoIndex = currentContent.findIndex((quarto) => quarto.id == Number(pId));
@@ -46,6 +46,7 @@ router.put("/quartos/att/:id", (req, res) => {
     cama: cCama,
     ocupado: cOcupado,
     preco: cPreco,
+    foto: cFoto
   } = currentContent[quartoIndex];
 
   const updateQuarto = {
@@ -53,7 +54,8 @@ router.put("/quartos/att/:id", (req, res) => {
     tipo: tipo ? tipo : cTipo,
     cama: cama ? cama : cCama,
     ocupado: ocupado ? ocupado : cOcupado,
-    preco: preco ? preco : cPreco
+    preco: preco ? preco : cPreco,
+    foto: foto ? foto : cFoto
   };
   currentContent[quartoIndex] = updateQuarto;
   writeFile(currentContent);

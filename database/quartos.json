@@ -1,1 +1,34 @@
-[{"id":401,"tipo":"master","cama":"queen size","ocupado":true,"preco":400},{"id":101,"tipo":"standard","cama":"solteiro","ocupado":true,"preco":150},{"id":201,"tipo":"duplo","cama":"solteiro","ocupado":true,"preco":200},{"id":301,"tipo":"deluxe","cama":"casal","ocupado":false,"preco":300}]
+[
+  {
+    "id": 401,
+    "tipo": "master",
+    "cama": "queen size",
+    "ocupado": true,
+    "preco": 400,
+    "foto": "https://unsplash.com/photos/PJNO2sLlbB8"
+  },
+  {
+    "id": 101,
+    "tipo": "standard",
+    "cama": "solteiro",
+    "ocupado": true,
+    "preco": 150,
+    "foto": "https://unsplash.com/photos/0h9LsnY13Hs"
+  },
+  {
+    "id": 201,
+    "tipo": "duplo",
+    "cama": "solteiro",
+    "ocupado": true,
+    "preco": 200,
+    "foto": "https://unsplash.com/photos/gdJpDTU85ek"
+  },
+  {
+    "id": 301,
+    "tipo": "deluxe",
+    "cama": "casal",
+    "ocupado": false,
+    "preco": 300,
+    "foto": "https://unsplash.com/photos/oxeCZrodz78"
+  }
+]
