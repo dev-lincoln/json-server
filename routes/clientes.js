@@ -20,7 +20,7 @@ router.get("/clientes", (req, res) => {
 router.get("/clientes/:id", (req, res) => {
   const { id } = req.params;
   const content = readFile();
-  const cliente = content[0].find((func) => func.id == id);
+  const cliente = content[0].find((cliente) => cliente.id == id);
   res.json(cliente);
 });
 
